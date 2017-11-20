@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 int main(void){
+    // https://projects.drogon.net/raspberry-pi/wiringpi/pins/
     wiringPiSetup();
 
     int leds[4] = {0,1,2,3};
