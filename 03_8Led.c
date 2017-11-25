@@ -1,24 +1,38 @@
 #include <wiringPi.h>
 #include <stdio.h>
 
-int main(void){
+#define PINS_NUMBER 8
+
+enum WiringPiToBCM {B17,B18,B27,B22,B23,B24,B25,B4};
+
+void switchPinsSequentially(int pins[], int status, int length) {
+  printf("Switch pins: %d\n", status);
+  int i;
+  for (i = 0; i < length; i++) {
+    digitalWrite(pins[i], status);
+    delay(200);
+  }
+}
+
+void initializePins(int pins[], int type, int length) {
+  printf("Initialize pins.");
+  int i;
+  for (i = 0; i < length; i++) {
+    pinMode(pins[i], type);
+  }
+}
+
+int main(void) {
     wiringPiSetup();
 
-    int leds[4] = {0,1,2,3};
+    int leds[PINS_NUMBER] = {B17,B18,B27,B22,B23,B24,B25,B4};
+    printf("---Lesson 03---\n");
 
-    int i;
-    for (i = 0; i < 3; i++) {
-	pinMode(leds[i], OUTPUT);
-    }
+    initializePins(leds, OUTPUT, PINS_NUMBER);
 
     while(1) {
-        for (i = 0; i < 3; i++) {
-            digitalWrite(leds[i], LOW);
-	    delay(500);
-	}
-	for (i = 0; i < 3; i++) {
-	    digitalWrite(leds[i], HIGH);	
-	}
+	switchPinsSequentially(leds, LOW, PINS_NUMBER);
+	switchPinsSequentially(leds, HIGH, PINS_NUMBER);
     }
     return 0;
 }
