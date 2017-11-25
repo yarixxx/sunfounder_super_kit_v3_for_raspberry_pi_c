@@ -1,0 +1,2 @@
+enum WringPiToBCM {B17,B18,B27,B22,B23,B24,B25,B4};
+

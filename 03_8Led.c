@@ -1,9 +1,8 @@
+#include "t_extension.h"
 #include <wiringPi.h>
 #include <stdio.h>
 
 #define PINS_NUMBER 8
-
-enum WiringPiToBCM {B17,B18,B27,B22,B23,B24,B25,B4};
 
 void switchPinsSequentially(int pins[], int status, int length) {
   printf("Switch pins: %d\n", status);
