@@ -6,6 +6,9 @@ Original code: https://github.com/sunfounder/Sunfounder_SuperKit_C_code_for_Rasp
 ## How to compile?
 gcc helloworld.c -o helloworld -lwiringPi
 
+## To compile with lwiringPiDev
+gcc helloworld.c -o helloworld -lwiringPi -lwiringPiDev
+
 After this we can run our application.
 
 ./helloworld
